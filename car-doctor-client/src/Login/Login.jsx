@@ -1,5 +1,6 @@
 import React from 'react';
 import loginImg from '../../src/assets/images/login/login.svg'
+import { Link } from 'react-router-dom';
 const Login = () => {
 
     const handleLogin = e=>{
@@ -35,6 +36,7 @@ const Login = () => {
                                 <input className="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </form>
+                        <p>New To Car Doctor ? <Link to='singup'>Sign Up</Link></p>
                     </div>
                 </div>
             </div>
