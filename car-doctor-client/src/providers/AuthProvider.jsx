@@ -3,7 +3,8 @@ import { createUserWithEmailAndPassword, getAuth,onAuthStateChanged, signInWithE
 import app from '../Authentication/firebase.config';
 
 export const AuthContext = createContext(null);
-const auth = getAuth(app)
+const auth = getAuth(app);
+
 const AuthProvider = ({children}) => {
 
     const [user,setUser] = useState(null);
