@@ -25,7 +25,7 @@ import Checkout from '../Pages/Checkout/Checkout';
         {
           path:'/checkout/:id',
           element:<Checkout></Checkout>,
-          loader:({params})=> fetch(`https://car-doctor-server-rho-six.vercel.app/services/${params.id}`)
+          loader:({params})=> fetch(`http://localhost:5000/services/${params.id}`)
         }
     ]
     }
