@@ -1,9 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext ,useNavigate} from 'react';
 import loginImg from '../../assets/images/login/login.svg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
+import Swal from 'sweetalert2';
+
 const SignUp = () => {
 const {createUser} = useContext(AuthContext);
+const navigate = useNavigate();
+
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -16,7 +20,9 @@ const {createUser} = useContext(AuthContext);
         .then(result=> {
             const newUser = result.user;
             console.log(newUser);
+            Swal.fire('Successfully Created Account')
             form.reset();
+            navigate('/');
         })
         .catch(error=> {
             console.log(error.message);
@@ -42,7 +48,7 @@ const {createUser} = useContext(AuthContext);
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" name='email' className="input input-bordered" />
+                                <input type="email" placeholder="email" name='email' className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
