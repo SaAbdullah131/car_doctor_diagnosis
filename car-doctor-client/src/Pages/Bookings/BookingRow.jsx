@@ -2,7 +2,7 @@ import React from 'react';
 import Swal from 'sweetalert2';
 
 const BookingRow = ({ booking,handleDelete,handleBookingConfirm}) => {
-    const {_id,img, date, service, price } = booking;
+    const {_id,img, date, service, price ,status } = booking;
 
  return (
         <tr>
@@ -24,7 +24,10 @@ const BookingRow = ({ booking,handleDelete,handleBookingConfirm}) => {
             <td>{date}</td>
             <td>$ {price}</td>
             <th>
-                <button onClick={()=> handleBookingConfirm(_id)} className="btn btn-ghost btn-xs">Confirm</button>
+                {
+                    status === 'confirm' ? <span className='font-bold text-primary'>Confirmed</span> :
+                    <button onClick={()=> handleBookingConfirm(_id)} className="btn btn-ghost btn-xs">Please Confirm</button>
+                }
             </th>
         </tr>
     );
