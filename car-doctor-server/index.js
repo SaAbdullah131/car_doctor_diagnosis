@@ -73,6 +73,13 @@ async function run() {
       res.send(result);
   })  
 
+  /**------------------------- Update Bookings info----------------------------------- */
+  app.patch('/bookings/:id',async(req,res)=> {
+      const updatedBooking = req.body;
+       
+  })
+
+  /**-------------------------- Update Bookings End ------------------------------------ */
 
   // bookings delete
 

@@ -17,6 +17,7 @@ const Bookings = () => {
             })
     }, [])
 
+    // delete bookings service element works
     const handleDelete = id=> {
         const proceed =  Swal.fire({
              title: 'Are you sure?',
@@ -47,6 +48,30 @@ const Bookings = () => {
              })
          }
      }
+// booking confirm button works 
+     const handleBookingConfirm = (id) => {
+        const proceed =  Swal.fire({
+            title: 'Are you sure?',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+             cancelButtonColor: '#d33',
+           //  confirmButtonText: 'Yes, delete it!'
+          })
+        fetch(`http://localhost:5000/bookings/${id}`,{
+            method:'PATCH',
+            headers:{
+                'content-type':'application/json'
+            },
+
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.modifiedCount > 0) {
+                Swal.fire('Update Successfully done');
+            }
+        })
+    }
 
     return (
         <div>
@@ -73,6 +98,7 @@ const Bookings = () => {
                                 key={booking._id}
                                 booking={booking}
                                 handleDelete = {handleDelete}
+                                handleBookingConfirm = {handleBookingConfirm}
                             >
 
                             </BookingRow>)
