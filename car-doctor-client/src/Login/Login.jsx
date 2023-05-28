@@ -18,8 +18,26 @@ let from = location.state?.from?.pathname || '/';
         signIn(email,password)
         .then(result=> {
             const loggedUser = result.user;
-            console.log(loggedUser);
+            const loggedUserEmail = {
+                email: loggedUser.email,
+            }
+            console.log(loggedUserEmail);
+            
+          
+            fetch(`http://localhost:5000/jwt`,{
+            method:'POST',
+            headers: {
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify(loggedUserEmail)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log("jwt response",data);
+            // Warning: Local is the not the best (second best place) to store access token
+            localStorage.setItem('car-access-token',data.token);
             navigate(from ,{replace:true});
+        })
         })
         .catch(error=> {
             const message = error.message;
