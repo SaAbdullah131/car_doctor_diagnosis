@@ -70,6 +70,8 @@ async function run() {
   // some data read
   app.get('/bookings',async(req,res)=> {
     // console.log(req.query.email);
+    // console.log(req.headers);
+
     let query = {};
     if(req.query?.email) {
       query = {email:req.query.email}

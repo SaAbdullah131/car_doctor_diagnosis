@@ -7,6 +7,7 @@ const Login = () => {
 const {signIn} = useContext(AuthContext);
 const location = useLocation();
 const navigate  = useNavigate();
+
 let from = location.state?.from?.pathname || '/';
 
     const handleLogin = e=>{
@@ -14,16 +15,18 @@ let from = location.state?.from?.pathname || '/';
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
+
+        // console.log(email,password);
+
         signIn(email,password)
         .then(result=> {
             const loggedUser = result.user;
             const loggedUserEmail = {
                 email: loggedUser.email,
             }
-            console.log(loggedUserEmail);
-            
-          
+
+            // console.log(loggedUserEmail);
+             
             fetch(`http://localhost:5000/jwt`,{
             method:'POST',
             headers: {
